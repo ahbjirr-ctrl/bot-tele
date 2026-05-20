@@ -347,25 +347,5 @@ bot.on('text', async (ctx) => {
     }
 });
 
-const express = require('express');
-const app = express();
-
-app.use(express.json());
-
-app.get('/', (req, res) => {
-    res.send('Bot aktif 🚀');
-});
-
-app.post('/webhook', async (req, res) => {
-    try {
-        await bot.handleUpdate(req.body);
-        res.sendStatus(200);
-    } catch (e) {
-        console.error(e);
-        res.sendStatus(500);
-    }
-});
-
-module.exports = app;
-
+bot.launch();
 console.log('🚀 Bot Running...');
